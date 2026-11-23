@@ -1,28 +1,162 @@
-# AI Job Matcher
+# AI Job Matcher 🚀
 
-Semantic job search plus an LLM agent. Built in 4 stages.
+An AI-powered job recommendation platform that understands natural-language job requests and recommends relevant opportunities using LLMs, semantic search, and skill-based matching.
 
-- [x] Stage 1: Data and SQL (this folder)
-- [x] Stage 2: Semantic search (embeddings + FAISS)
-- [ ] Stage 3: LLM layer (tool-using agent, structured JSON)
-- [ ] Stage 4: Ship it (FastAPI, Docker, free deploy)
-- [ ] Eval: 20 test queries, top-5 accuracy
+## ✨ Features
 
-## Run Stage 1
-```bash
-python seed_data.py   # creates jobs.db with ~500 synthetic postings
-python queries.py     # runs the example queries
+- **Natural Language Understanding:** Extracts skills, experience level, job role, and location from user queries.
+- **AI Agent:** Uses Google Gemini to understand job requirements.
+- **Semantic Search:** Uses Sentence Transformers and NumPy cosine similarity to find relevant jobs.
+- **Smart Filtering:** Filters jobs by location and experience level.
+- **AI Explanations:** Explains why recommended jobs match the user's request.
+- **REST API:** FastAPI backend with structured JSON responses.
+- **Interactive Dashboard:** React frontend with job recommendation cards.
+- **Fallback Handling:** Supports local request parsing when the AI service is unavailable.
+
+## 🛠️ Tech Stack
+
+| Area | Technology |
+|---|---|
+| Language | Python |
+| LLM | Google Gemini API |
+| Embeddings | Sentence Transformers |
+| Similarity Search | NumPy |
+| Database | SQLite |
+| Backend | FastAPI |
+| Frontend | React, Vite |
+| Icons | Lucide React |
+
+## 🏗️ Architecture
+
+```text
+User
+  ↓
+React Frontend
+  ↓
+FastAPI Backend
+  ↓
+Gemini AI Agent
+  ↓
+Request Understanding
+  ↓
+Semantic Search
+  ↓
+SQLite Job Database
+  ↓
+AI Recommendation Explanations
+  ↓
+React Dashboard
 ```
-No installs needed (Python standard library only).
 
-## Schema
-companies 1-to-many jobs; jobs many-to-many skills through job_skills.
+## 📂 Project Structure
 
-## Run Stage 2
-```bash
-pip install -r requirements.txt   # first run downloads a ~90 MB model
-python seed_data.py               # fresh database
-python index_jobs.py              # embeds jobs into jobs.faiss
-python search.py                  # semantic search + ranking demo
-python add_new_jobs.py            # adds 2 jobs, index updates without a rebuild
+```text
+ai-job-detector/
+├── agent.py
+├── main.py
+├── search.py
+├── embedder.py
+├── index_jobs.py
+├── queries.py
+├── seed_data.py
+├── add_new_jobs.py
+├── schema.sql
+├── requirements.txt
+├── jobs.db
+├── jobs.npz
+└── frontend/
+    ├── src/
+    ├── package.json
+    └── vite.config.js
 ```
+
+## ⚙️ Installation and Setup
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Singhprajjwal1222/AI-job-detector.git
+cd AI-job-detector
+```
+
+### 2. Create a Python environment
+
+```bash
+python -m venv .venv
+```
+
+Activate it on Windows:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+### 3. Install dependencies
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+### 4. Configure Gemini API
+
+Create a `.env` file in the root directory:
+
+```env
+GEMINI_API_KEY=your_api_key_here
+```
+
+Get your API key from [Google AI Studio](https://aistudio.google.com/app/apikey).
+
+Never upload your API key to GitHub.
+
+### 5. Start the backend
+
+```bash
+uvicorn main:app --reload
+```
+
+Backend: http://127.0.0.1:8000
+
+API documentation: http://127.0.0.1:8000/docs
+
+### 6. Start the frontend
+
+Open another terminal:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Frontend: http://localhost:5173
+
+## 💡 Example Query
+
+```text
+I know C++, DSA and Python.
+I want a junior software developer job in Bangalore.
+```
+
+The system extracts the user's skills, experience level, and preferred location before finding relevant job recommendations.
+
+## 📈 Development Progress
+
+- [x] Stage 1: Data engineering and SQL database
+- [x] Stage 2: Semantic search and embeddings
+- [x] Stage 3: Gemini-powered AI agent and structured JSON
+- [x] Stage 4: FastAPI backend and React frontend
+- [ ] Docker and cloud deployment
+- [ ] Evaluation using 20 test queries and top-5 accuracy
+
+## 🔮 Future Improvements
+
+- Docker containerization
+- Cloud deployment
+- Larger real-world job datasets
+- Improved recommendation ranking
+- Recommendation accuracy evaluation
+
+---
+
+**Built to explore practical applications of LLM agents, semantic search, backend engineering, and modern frontend development.**
