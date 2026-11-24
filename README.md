@@ -1,4 +1,4 @@
-# AI Job Matcher 🚀
+#Jobpilot -AI Job Matcher 🚀
 
 An AI-powered job recommendation platform that understands natural-language job requests and recommends relevant opportunities using LLMs, semantic search, and skill-based matching.
 
