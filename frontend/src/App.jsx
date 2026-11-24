@@ -35,20 +35,18 @@ function App() {
     setDetails(null);
 
     try {
-      const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
+      const API_URL =
+        import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
 
-const response = await fetch(
-  `${API_URL}/find-jobs`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            request: query
-          })
-        }
-      );
+      const response = await fetch(`${API_URL}/find-jobs`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          request: query
+        })
+      });
 
       if (!response.ok) {
         throw new Error("Unable to fetch jobs. Please try again.");
@@ -86,14 +84,14 @@ const response = await fetch(
           </div>
 
           <span>
-            Career<span className="brand-highlight">AI</span>
+            Job<span className="brand-highlight">pilot</span>
           </span>
         </div>
 
         <div className="nav-right">
           <span className="status-dot"></span>
           <span>AI Engine Active</span>
-          <div className="avatar">AI</div>
+          <div className="avatar">JP</div>
         </div>
 
       </nav>
@@ -105,7 +103,7 @@ const response = await fetch(
 
           <div className="eyebrow">
             <Sparkles size={15} />
-            <span>SMART CAREER DISCOVERY</span>
+            <span>AI POWERED CAREER DISCOVERY</span>
           </div>
 
           <h1>
@@ -338,7 +336,7 @@ const response = await fetch(
                   </div>
 
                   <div className="job-footer">
-                    <span>Recommended by CareerAI</span>
+                    <span>Recommended by Jobpilot AI</span>
                     <ArrowUpRight size={18} />
                   </div>
 
@@ -399,7 +397,7 @@ const response = await fetch(
 
       {/* Footer */}
       <footer>
-        <span>© 2026 CareerAI</span>
+        <span>© 2026 Jobpilot</span>
         <span>Built with AI · FastAPI · React</span>
       </footer>
 

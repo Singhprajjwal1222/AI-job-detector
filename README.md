@@ -1,71 +1,103 @@
-#AI Job Matcher 🚀
+# Jobpilot 🎯
+### Connecting Talent with Opportunity.
 
-An AI-powered job recommendation platform that understands natural-language job requests and recommends relevant opportunities using LLMs, semantic search, and skill-based matching.
+An AI-powered recruitment platform that connects job seekers with relevant career opportunities through intelligent job matching, natural-language understanding, and semantic search.
+
+## Overview
+
+Jobpilot helps job seekers discover relevant opportunities by describing their skills, experience, preferred job roles, and location in natural language.
+
+Powered by Google Gemini and semantic search, Jobpilot understands job requirements and recommends opportunities based on relevance and skill compatibility.
+
+Our vision is to build a two-sided recruitment platform where job seekers discover the right opportunities and recruiters find the right talent.
 
 ## ✨ Features
 
-- **Natural Language Understanding:** Extracts skills, experience level, job role, and location from user queries.
-- **AI Agent:** Uses Google Gemini to understand job requirements.
-- **Semantic Search:** Uses Sentence Transformers and NumPy cosine similarity to find relevant jobs.
-- **Smart Filtering:** Filters jobs by location and experience level.
-- **AI Explanations:** Explains why recommended jobs match the user's request.
-- **REST API:** FastAPI backend with structured JSON responses.
-- **Interactive Dashboard:** React frontend with job recommendation cards.
-- **Fallback Handling:** Supports local request parsing when the AI service is unavailable.
+- **AI-Powered Job Search:** Search for jobs using natural-language descriptions.
+- **Gemini AI Integration:** Understands job requirements and extracts relevant information.
+- **Smart Skill Matching:** Matches job opportunities with relevant skills and experience.
+- **Semantic Search:** Uses vector embeddings and similarity scoring to find relevant jobs.
+- **Location-Based Filtering:** Finds opportunities based on preferred locations.
+- **Experience-Level Filtering:** Helps identify jobs suitable for different experience levels.
+- **AI Match Explanations:** Explains why recommended jobs are relevant.
+- **Interactive Dashboard:** Displays job recommendations through a React-based interface.
+- **REST API:** Connects the frontend with the FastAPI backend.
+- **Fallback Support:** Provides alternative request processing and lightweight embedding support.
 
 ## 🛠️ Tech Stack
 
 | Area | Technology |
 |---|---|
-| Language | Python |
-| LLM | Google Gemini API |
-| Embeddings | Sentence Transformers |
+| Programming Language | Python |
+| AI Model | Google Gemini API |
+| Embeddings | Sentence Transformers / Hash Embeddings |
 | Similarity Search | NumPy |
 | Database | SQLite |
 | Backend | FastAPI |
-| Frontend | React, Vite |
+| Frontend | React.js |
+| Build Tool | Vite |
 | Icons | Lucide React |
+| Frontend Hosting | Vercel |
+| Backend Hosting | Render |
 
-## 🏗️ Architecture
+## 🏗️ System Architecture
 
 ```text
-User
-  ↓
-React Frontend
-  ↓
-FastAPI Backend
-  ↓
-Gemini AI Agent
-  ↓
-Request Understanding
-  ↓
-Semantic Search
-  ↓
-SQLite Job Database
-  ↓
-AI Recommendation Explanations
-  ↓
-React Dashboard
+                 User
+                   |
+                   v
+             React Frontend
+                   |
+                   v
+             FastAPI Backend
+                   |
+                   v
+              Gemini AI Agent
+                   |
+                   v
+          Requirement Extraction
+                   |
+                   v
+              Job Search
+                   |
+                   v
+          Vector Similarity Matching
+                   |
+                   v
+             SQLite Database
+                   |
+                   v
+          AI Match Explanations
+                   |
+                   v
+           Job Recommendation UI
 ```
 
 ## 📂 Project Structure
 
 ```text
 ai-job-detector/
+│
 ├── agent.py
 ├── main.py
 ├── search.py
 ├── embedder.py
 ├── index_jobs.py
 ├── queries.py
-├── seed_data.py
 ├── add_new_jobs.py
+├── seed_data.py
 ├── schema.sql
 ├── requirements.txt
 ├── jobs.db
 ├── jobs.npz
+├── render.yaml
+│
 └── frontend/
     ├── src/
+    │   ├── App.jsx
+    │   ├── App.css
+    │   ├── index.css
+    │   └── main.jsx
     ├── package.json
     └── vite.config.js
 ```
@@ -75,11 +107,11 @@ ai-job-detector/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/Singhprajjwal1222/AI-job-detector.git
-cd AI-job-detector
+git clone https://github.com/Singhprajjwal1222/HireSense.git
+cd HireSense
 ```
 
-### 2. Create a Python environment
+### 2. Create a Python virtual environment
 
 ```bash
 python -m venv .venv
@@ -91,72 +123,10 @@ Activate it on Windows:
 .\.venv\Scripts\Activate.ps1
 ```
 
-### 3. Install dependencies
+### 3. Install Python dependencies
 
 ```bash
 python -m pip install -r requirements.txt
 ```
 
 ### 4. Configure Gemini API
-
-Create a `.env` file in the root directory:
-
-```env
-GEMINI_API_KEY=your_api_key_here
-```
-
-Get your API key from [Google AI Studio](https://aistudio.google.com/app/apikey).
-
-Never upload your API key to GitHub.
-
-### 5. Start the backend
-
-```bash
-uvicorn main:app --reload
-```
-
-Backend: http://127.0.0.1:8000
-
-API documentation: http://127.0.0.1:8000/docs
-
-### 6. Start the frontend
-
-Open another terminal:
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-Frontend: http://localhost:5173
-
-## 💡 Example Query
-
-```text
-I know C++, DSA and Python.
-I want a junior software developer job in Bangalore.
-```
-
-The system extracts the user's skills, experience level, and preferred location before finding relevant job recommendations.
-
-## 📈 Development Progress
-
-- [x] Stage 1: Data engineering and SQL database
-- [x] Stage 2: Semantic search and embeddings
-- [x] Stage 3: Gemini-powered AI agent and structured JSON
-- [x] Stage 4: FastAPI backend and React frontend
-- [ ] Docker and cloud deployment
-- [ ] Evaluation using 20 test queries and top-5 accuracy
-
-## 🔮 Future Improvements
-
-- Docker containerization
-- Cloud deployment
-- Larger real-world job datasets
-- Improved recommendation ranking
-- Recommendation accuracy evaluation
-
----
-
-**Built to explore practical applications of LLM agents, semantic search, backend engineering, and modern frontend development.**

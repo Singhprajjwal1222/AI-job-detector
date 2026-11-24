@@ -1,42 +1,79 @@
-# AI Job Matcher — AI-Powered Job Recommendation System
+# Jobpilot 🎯
+### Connecting Talent with Opportunity.
 
-An intelligent job recommendation platform that understands natural-language job requests and recommends relevant opportunities using AI, semantic search, and skill-based matching.
+An AI-powered recruitment platform that connects job seekers with relevant career opportunities through intelligent job matching, natural-language understanding, and semantic search.
 
 ## Overview
 
-AI Job Matcher helps users discover relevant job opportunities by describing their skills, experience level, and preferred location in natural language.
+Jobpilot helps job seekers discover relevant opportunities by describing their skills, experience, preferred job roles, and location in natural language.
 
-The system uses Google's Gemini API to understand user requests, sentence-transformer embeddings for semantic search, and a FastAPI backend connected to a React frontend.
+Powered by Google Gemini and semantic search, Jobpilot understands job requirements and recommends opportunities based on relevance and skill compatibility.
 
-## Key Features
+Our vision is to build a two-sided recruitment platform where job seekers discover the right opportunities and recruiters find the right talent.
 
-- **Natural Language Understanding:** Extracts skills, job roles, experience levels, and locations from user queries.
-- **Semantic Search:** Finds relevant jobs using sentence-transformer embeddings and NumPy cosine similarity.
-- **AI-Powered Recommendations:** Uses Gemini to generate explanations for recommended jobs.
-- **Smart Filtering:** Filters opportunities by experience level and location.
-- **REST API:** FastAPI backend with structured JSON responses.
-- **Interactive Dashboard:** React frontend displaying job recommendations and match scores.
-- **Fallback Handling:** Provides local request parsing and fallback explanations when the AI service is unavailable.
+## ✨ Features
 
-## Technology Stack
+- **AI-Powered Job Search:** Search for jobs using natural-language descriptions.
+- **Gemini AI Integration:** Understands job requirements and extracts relevant information.
+- **Smart Skill Matching:** Matches job opportunities with relevant skills and experience.
+- **Semantic Search:** Uses vector embeddings and similarity scoring to find relevant jobs.
+- **Location-Based Filtering:** Finds opportunities based on preferred locations.
+- **Experience-Level Filtering:** Helps identify jobs suitable for different experience levels.
+- **AI Match Explanations:** Explains why recommended jobs are relevant.
+- **Interactive Dashboard:** Displays job recommendations through a React-based interface.
+- **REST API:** Connects the frontend with the FastAPI backend.
+- **Fallback Support:** Provides alternative request processing and lightweight embedding support.
 
-| Component | Technology |
+## 🛠️ Tech Stack
+
+| Area | Technology |
 |---|---|
 | Programming Language | Python |
-| AI / LLM | Google Gemini API |
-| Embeddings | Sentence Transformers |
+| AI Model | Google Gemini API |
+| Embeddings | Sentence Transformers / Hash Embeddings |
 | Similarity Search | NumPy |
 | Database | SQLite |
 | Backend | FastAPI |
-| Frontend | React, Vite |
+| Frontend | React.js |
+| Build Tool | Vite |
 | Icons | Lucide React |
-| API Testing | Swagger UI |
+| Frontend Hosting | Vercel |
+| Backend Hosting | Render |
 
-## System Architecture
+## 🏗️ System Architecture
 
-User Query → React Frontend → FastAPI Backend → Gemini Request Understanding → Semantic Search → SQLite Job Data → AI Explanations → React Results Dashboard
+```text
+                 User
+                   |
+                   v
+             React Frontend
+                   |
+                   v
+             FastAPI Backend
+                   |
+                   v
+              Gemini AI Agent
+                   |
+                   v
+          Requirement Extraction
+                   |
+                   v
+              Job Search
+                   |
+                   v
+          Vector Similarity Matching
+                   |
+                   v
+             SQLite Database
+                   |
+                   v
+          AI Match Explanations
+                   |
+                   v
+           Job Recommendation UI
+```
 
-## Project Structure
+## 📂 Project Structure
 
 ```text
 ai-job-detector/
@@ -47,38 +84,40 @@ ai-job-detector/
 ├── embedder.py
 ├── index_jobs.py
 ├── queries.py
-├── seed_data.py
 ├── add_new_jobs.py
+├── seed_data.py
 ├── schema.sql
 ├── requirements.txt
 ├── jobs.db
 ├── jobs.npz
+├── render.yaml
 │
 └── frontend/
     ├── src/
     │   ├── App.jsx
     │   ├── App.css
-    │   └── index.css
+    │   ├── index.css
+    │   └── main.jsx
     ├── package.json
-    └── ...
+    └── vite.config.js
 ```
 
-## Getting Started
+## ⚙️ Installation and Setup
 
 ### 1. Clone the repository
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
-cd ai-job-detector
+git clone https://github.com/Singhprajjwal1222/HireSense.git
+cd HireSense
 ```
 
-### 2. Create and activate a Python environment
+### 2. Create a Python virtual environment
 
 ```bash
 python -m venv .venv
 ```
 
-Windows PowerShell:
+Activate it on Windows:
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
@@ -90,66 +129,4 @@ Windows PowerShell:
 python -m pip install -r requirements.txt
 ```
 
-### 4. Configure the Gemini API key
-
-Create a `.env` file in the project root:
-
-```env
-GEMINI_API_KEY=your_gemini_api_key
-```
-
-Get an API key from [Google AI Studio](https://aistudio.google.com/app/apikey).
-
-Never commit your `.env` file or expose your API key.
-
-### 5. Start the backend
-
-```bash
-uvicorn main:app --reload
-```
-
-Backend: `http://127.0.0.1:8000`
-
-API documentation: `http://127.0.0.1:8000/docs`
-
-### 6. Start the frontend
-
-Open another terminal:
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-Frontend: `http://localhost:5173`
-
-## Example User Query
-
-```text
-I know C++, DSA and Python.
-I want a junior software developer job in Bangalore.
-```
-
-The system extracts the user's skills, experience level, and location, then returns relevant job recommendations with explanations.
-
-## Current Implementation
-
-- SQL-based job database with companies, jobs, and skills.
-- Semantic embeddings for job descriptions.
-- NumPy-based cosine similarity search.
-- Gemini-powered natural-language request understanding.
-- AI-generated job recommendation explanations.
-- FastAPI backend and React frontend integration.
-
-## Future Improvements
-
-- Docker containerization.
-- Cloud deployment.
-- Larger real-world job datasets.
-- Recommendation evaluation using top-5 accuracy.
-- Advanced ranking based on skill overlap and job relevance.
-
----
-
-**Developed as an AI-powered software engineering project combining LLM agents, semantic search, backend APIs, databases, and frontend development.**
+### 4. Configure Gemini API
