@@ -3,3 +3,5 @@ faiss-cpu
 sentence-transformers
 google-genai
 python-dotenv
+fastapi
+uvicorn[standard]
